@@ -26,9 +26,9 @@ const configuration = new openai_1.Configuration({
 });
 exports.openai = new openai_1.OpenAIApi(configuration);
 // ROUTES SECTION 
-app.use('/', (req, res) => res.send("I GOT YOUR PING PONG"));
 app.use('/openai', openai_2.default);
 app.use('/auth', auth_1.default);
+app.get('/', (req, res) => res.send("I GOT YOUR PING PONG"));
 // SERVER SETUP
 const PORT = process.env.PORT || 9000;
 app.listen(PORT, () => {

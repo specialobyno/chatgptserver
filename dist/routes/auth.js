@@ -20,6 +20,7 @@ const router = express_1.default.Router();
 router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { username, password } = req.body;
+        console.log(username);
         const chatEngineResponse = yield axios_1.default.get(`https://api.chatengine.io/users/me`, {
             headers: {
                 "Project-ID": process.env.PROJECT_ID,
@@ -27,6 +28,7 @@ router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* 
                 "User-Secret": password,
             },
         });
+        console.log(chatEngineResponse.data);
         res.status(200).json({ response: chatEngineResponse.data });
     }
     catch (err) {
