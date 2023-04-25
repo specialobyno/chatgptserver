@@ -7,6 +7,7 @@ const router = express.Router()
 router.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body
+    console.log(username)
     const chatEngineResponse = await axios.get(`https://api.chatengine.io/users/me`, {
       headers: {
         "Project-ID": process.env.PROJECT_ID!,
@@ -14,6 +15,7 @@ router.post("/login", async (req, res) => {
         "User-Secret": password,
       },
     })
+    console.log(chatEngineResponse.data)
     res.status(200).json({ response: chatEngineResponse.data })
   } catch (err: any) {
     console.error("error", err.message)
