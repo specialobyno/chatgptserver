@@ -25,9 +25,10 @@ export const openai = new OpenAIApi(configuration);
 
 
 // ROUTES SECTION 
-app.use('/', (req, res) => res.send("I GOT YOUR PING PONG"))
+
 app.use('/openai', openaiRoutes)
 app.use('/auth', authRoutes)
+app.get('/', (req, res) => res.send("I GOT YOUR PING PONG"))
 // SERVER SETUP
 const PORT = process.env.PORT || 9000
 app.listen(PORT, ()=> {
